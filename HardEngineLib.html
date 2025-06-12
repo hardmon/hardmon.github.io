@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HardMon is a lightweight hardware monitoring utility for CPU, GPU, RAM, and HDD with temperature and performance tracking. Supports Intel, AMD, ATI, Nvidia, and S.M.A.R.T. features.">
+  <meta name="keywords" content="HardMon, CPU Monitor, GPU Monitor, Hardware Monitor, Temperature Monitor, Windows Monitor, System Info, HardEngine.dll, .NET Hardware Library">
+  <meta name="author" content="Ari Sohandri Putra" />
+  <meta property="og:title" content="HardMon - CPU, GPU, RAM & HDD Monitoring Utility" />
+  <meta property="og:description" content="Monitor CPU, GPU, RAM, and HDD with temperature and performance stats. Supports Intel, AMD, Nvidia, and S.M.A.R.T. hardware." />
+   <meta property="og:image" content="https://hardmon.github.io/HardMon%20Logo.png" />
+  <meta property="og:url" content="https://hardmon.github.io/HardEngineLib.html" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://hardmon.github.io/HardEngineLib.html" /> 
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <title>HardMon - HardEngine Library</title>
+  <style>
+    body {
+      background-color: #000066;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+    a {
+      color: #0099FF;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #FF0000;
+    }
+    header, nav, section, footer {
+      max-width: 930px;
+      margin: auto;
+      padding: 10px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      width: 80px;
+      height: auto;
+    }
+    .language-switch {
+      text-align: right;
+      font-weight: bold;
+      color: #CCCCCC;
+    }
+    .nav-links {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #FFFFFF;
+    }
+    .main-content {
+      background: #FFFFFF;
+      padding: 20px;
+      display: flex;
+    }
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+    }
+    .download-table {
+      margin-top: 20px;
+      width: 100%;
+      border: 1px solid #000;
+      border-collapse: collapse;
+    }
+    .download-table td {
+      border: 1px solid #000;
+      padding: 8px;
+    }
+    footer {
+      text-align: center;
+      color: #FFFFFF;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+  .style21 {color: #CCCCCC}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="img/HardMon Logo.png" alt="HardMon Logo" width="1008" height="934" />
+      <h1 style="color: #FFF; margin-left: 10px;"><span style="color: #FFF">Hard</span><span style="color: #FFD700">Mon</span></h1>
+    </div>
+     <div class="language-switch"> <a href="#" onclick="changeLang('en')">English</a> |
+  <a href="#" onclick="changeLang('id')">Bahasa Indonesia</a> |
+  <a href="#" onclick="changeLang('es')">Español</a></div>
+    <nav class="nav-links">
+      <a href="/">Home</a> | 
+      <span class="style21">Get HardEngineLib</span> | 
+      <a href="License.html">License</a>    </nav>
+  </header>
+
+  <section class="main-content">
+    <div style="flex: 1;">
+      <img src="img/HardEngine.png" alt="Program" width="382" height="390" />    </div>
+    <div style="flex: 2; margin-left: 20px;">
+      <h2>About HardEngine</h2>
+      <p><strong>HardMon</strong> is a .NET-based hardware monitoring solution for developers. It includes <strong>HardEngine.dll</strong>, a powerful library to access real-time information from CPU, GPU, RAM, and storage devices.</p>
+      <p>Real-time monitoring with easy C# integration. Lightweight and fast performance. Compatible with Windows 7, 8, 10, and 11. No third-party dependencies.</p>
+
+      <table class="download-table">
+        <tr>
+          <td colspan="2" style="background-color: #FFD700;"><strong>HardEngine.dll 8.2.0 </strong></td>
+        </tr>
+        <tr>
+          <td><strong>.NET 2.0/3.5/4.0/4.5 </strong></td>
+          <td><a href="Released/Lib/HardEngineLib_8.2.0.zip" target="_blank">Download</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2015 - 2025 Ari Sohandri Putra. All Rights Reserved.
+  </footer>
+   <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,id,es',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    function changeLang(lang) {
+      const select = document.querySelector("select.goog-te-combo");
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event("change"));
+      }
+    }
+  </script>
+
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
