@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>HardMon - User Guide</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="HardMon is a real-time hardware monitoring tool for Windows. Displays CPU, GPU, RAM, and storage info with dark theme support and SDK library." />
+  <meta name="keywords" content="HardMon, hardware monitor, system monitor, CPU GPU RAM, Windows monitoring tool, real-time hardware info, HardMon SDK, system performance, PC health, monitoring tool" />
+  <meta name="author" content="Ari Sohandri Putra" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="bin/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="bin/favicon.ico" type="image/x-icon" />
+
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="HardMon - Real-time hardware monitoring tool" />
+  <meta property="og:description" content="Monitor your PC hardware in real-time: CPU, GPU, RAM, and more. Download HardMon for Windows now." />
+  <meta property="og:image" content="bin/logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hardmon.github.io" />
+
+  <!-- Responsive Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style type="text/css">
+    body, td, th {
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: small;
+    }
+    a {
+      color: #0000FF;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #FF0000;
+    }
+    .style3 {
+      font-size: small;
+    }
+    .style4 {
+      font-size: large;
+      font-weight: bold;
+      color: #000000;
+    }
+    .style5 {
+      font-size: x-small;
+    }
+  .style6 {
+	color: #FF0000;
+	font-size: x-small;
+}
+  .style7 {font-size: x-small; color: #FF0000; }
+  .style8 {font-size: medium; font-weight: bold; }
+  .style9 {
+	color: #FF0000;
+	font-style: italic;
+}
+  </style>
+</head>
+<body>
+
+<table width="100%" border="0" cellpadding="5" cellspacing="5">
+  <tr>
+    <td width="78%" valign="top">
+      <table width="445" border="0" cellpadding="3" cellspacing="3">
+        <tr>
+          <td width="60"><img src="bin/logo.png" width="60" /></td>
+          <td width="364"><span class="style4">HardMon User Guide </span></td>
+        </tr>
+      </table>
+
+      <p class="style8">1. Introduction</p>
+      <p class="style3"><a href="/"><strong>HardMon</strong></a> is a hardware monitoring tool that provides real-time information about your system components, including:</p>
+      <ul>
+        <li><strong>CPU</strong> (Clock Speed, Load, Temperature, Power)</li>
+        <li><strong>GPU</strong> (Load, Temperature, Clock Speed, Memory Usage)</li>
+        <li><strong>RAM</strong> (Usage, Load, Available Memory)</li>
+        <li><strong>HDD/SSD</strong> (Temperature, Usage, Throughput)</li>
+      </ul>
+      <p class="style8">2. Getting Started</p>
+      <blockquote>
+        <p><strong>2.1 Launching HardMon</strong></p>
+        <ul>
+          <li>Double-click the <strong>HardMon</strong> executable to start the application.</li>
+          <li>The main window will display hardware information in a structured view.</li>
+        </ul>
+        <p><strong>2.2 Main Interface Overview</strong></p>
+        <p>The main window consists of:</p>
+        <ul>
+          <li><strong>Monitor View Panel</strong>: Displays all hardware components and their metrics.</li>
+          <li><strong>Status Bar</strong>: Shows tips and shortcuts (updates every 5 seconds).</li>
+          <li><strong>Menu Bar</strong>: Contains options for settings, saving data, and exiting.</li>
+        </ul>
+      </blockquote>
+      <p class="style8">3. Using HardMon</p>
+      <blockquote>
+        <p><strong>3.1 Viewing Real-Time Data</strong></p>
+        <ul>
+          <li>Hardware metrics <strong><em>update every second</em></strong> automatically.</li>
+        </ul>
+        <p><strong>3.2 Saving Monitoring Data</strong></p>
+        <ul>
+          <li>Click <strong>File</strong> → <strong>Save</strong> Monitoring Data.</li>
+          <li>Choose a location and filename (default: <em>HardMon_YYYY-MM-DD-hhmmss.txt</em>).</li>
+          <li>Click <strong>Save</strong> to export all current hardware data as a text file.</li>
+        </ul>
+        <p><strong>3.3 Changing Themes</strong></p>
+        <p>HardMon supports Light and Dark themes:</p>
+        <ul>
+          <li><strong>Dark </strong>Theme: View → Dark (Default)</li>
+          <li><strong>Light </strong>Theme: View → Light</li>
+        </ul>
+        <p>Shortcuts:</p>
+        <ul>
+          <li><strong>Dark </strong>Theme: Ctrl + D</li>
+          <li><strong>Light </strong>Theme: Ctrl + L</li>
+        </ul>
+        <p><strong>3.4 Adjusting Font Size</strong></p>
+        <p>You can change the text size for better readability:</p>
+        <ul>
+          <li><strong>Default</strong>: View → Default Size (9pt)</li>
+          <li><strong>Medium</strong>: View → Medium (11pt)</li>
+          <li><strong>Large</strong>: View → Large (12pt)</li>
+        </ul>
+        <p>Shortcuts:</p>
+        <ul>
+          <li><strong>Default</strong> Size: Ctrl + Shift + D</li>
+          <li><strong>Medium</strong> Size: Ctrl + Shift + M</li>
+          <li><strong>Large</strong> Size: Ctrl + Shift + L</li>
+        </ul>
+      </blockquote>
+      <p class="style8">4. Understanding Hardware Metrics</p>
+      <blockquote>
+        <p><strong>4.1 CPU Information</strong></p>
+        <ul>
+          <li><strong>Clock</strong>: Current frequency of CPU cores.</li>
+          <li><strong>Load</strong>: CPU usage per core (%).</li>
+          <li><strong>Temperature</strong>: Core temperatures (°C).</li>
+          <li><strong>Power</strong>: Power consumption (Watts).</li>
+        </ul>
+        <p><strong>4.2 GPU Information</strong></p>
+        <ul>
+          <li><strong>Load</strong>: GPU utilization (%).</li>
+          <li><strong>Temperature</strong>: GPU temperature (°C).</li>
+          <li><strong>Clock</strong>: Current GPU core/memory clock speeds (MHz).</li>
+          <li><strong>Memory</strong>: VRAM usage (Used/Total).</li>
+        </ul>
+        <p><strong>4.3 RAM Information</strong></p>
+        <ul>
+          <li><strong>Load</strong>: Memory usage (%).</li>
+          <li><strong>Usage</strong>: Breakdown of used/available/total RAM.</li>
+        </ul>
+        <p><strong>4.4 HDD/SSD Information</strong></p>
+        <ul>
+          <li><strong>Temperature</strong>: Drive temperature (°C).</li>
+          <li><strong>Usage</strong>: Disk activity (%).</li>
+          <li><strong>Throughput</strong>: Read/Write speeds (MB/s). (<span class="style9">if Supported</span>)</li>
+        </ul>
+      </blockquote>
+      <p class="style8">5. Troubleshooting</p>
+      <blockquote>
+        <p><strong>5.1 Missing Data</strong></p>
+        <ul>
+          <li>The hardware does not support monitoring.</li>
+          <li>HardMon are not installed correctly.</li>
+        </ul>
+        <p><strong>5.2 High CPU Usage</strong></p>
+        <ul>
+          <li>HardMon runs a background thread for real-time updates.</li>
+          <li>If performance is impacted, close unnecessary applications.</li>
+        </ul>
+        <p><strong>5.3 Application Freezes</strong></p>
+        <ul>
+          <li>Ensure your system meets minimum requirements.</li>
+          <li>Restart HardMon if unresponsive.</li>
+        </ul>
+      </blockquote>
+      <p><strong>Need Further Assistance?</strong><br />
+      If you encounter issues or have suggestions, please contact <a href="mailto:arisohandriputra@gmail.com">arisohandriputra@gmail.com</a>. </p>
+      <hr />
+      <p class="style5">
+        Copyright (c) 2015 - 2025 Ari Sohandri Putra. All rights reserved.
+        <br /><a href="License.txt">License terms</a>      </p>    </td>
+
+    <td width="22%" align="right" valign="top">
+      <table width="229" border="1" cellpadding="3" cellspacing="3" bordercolor="ededed">
+        <tr>
+          <td width="217" bgcolor="#66FF99"><strong>E-Mail</strong></td>
+        </tr>
+        <tr>
+          <td bgcolor="ededed"><a href="mailto:arisohandriputra@gmail.com">arisohandriputra@gmail.com</a></td>
+        </tr>
+        <tr>
+          <td bgcolor="ededed"><a href="mailto:dev.miw@alternet.com">dev.miw@alternet.com</a></td>
+        </tr>
+
+        <tr>
+          <td bgcolor="#66FF99"><strong>Quick Access</strong></td>
+        </tr>
+        <tr>
+          <td bgcolor="ededed"><a href="/">Homepage </a></td>
+        </tr>
+        <tr>
+          <td bgcolor="ededed"><a href="screenshot.html">Screenshot</a></td>
+        </tr>
+        <tr>
+          <td bgcolor="ededed"><a href="guide.html">User Guide<span class="style7"> *</span> <span class="style7">Active</span></a></td>
+        </tr>
+        <tr>
+          <td bgcolor="ededed"><a href="sdk.html">SDK Documentation</a></td>
+        </tr>
+
+        <tr>
+          <td bgcolor="#66FF99"><strong>Tag</strong></td>
+        </tr>
+        <tr>
+          <td bgcolor="ededed">
+            <a href="#">Hardware</a> <a href="#">Microsoft</a> <a href="#">Windows</a>
+            <a href="#">CPU</a> <a href="#">GPU</a> <a href="#">RAM</a>
+            <a href="#">HDD</a> <a href="#">Display</a> <a href="#">Monitor</a>
+            <a href="#">Clock</a> <a href="#">Load</a> <a href="#">Temperature</a> <a href="#">Power</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
