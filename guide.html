@@ -73,117 +73,120 @@
       </table>
 
       <p class="style8">1. Introduction</p>
-      <p class="style3"><a href="/"><strong>HardMon</strong></a> is a hardware monitoring tool that provides real-time information about your system components, including:</p>
+      <p class="style3">HardMon is a lightweight yet powerful hardware monitoring application designed to provide real-time insights into your system's performance. It displays detailed information about your <strong>CPU, GPU, RAM, and HDD</strong>, including temperature, clock speeds, load percentages, and power consumption.</p>
+      
+      <p>Key Features:</p>
       <ul>
-        <li><strong>CPU</strong> (Clock Speed, Load, Temperature, Power)</li>
-        <li><strong>GPU</strong> (Load, Temperature, Clock Speed, Memory Usage)</li>
-        <li><strong>RAM</strong> (Usage, Load, Available Memory)</li>
-        <li><strong>HDD/SSD</strong> (Temperature, Usage, Throughput)</li>
+        <li><strong>Real-time monitoring</strong> of critical hardware components</li>
+        <li><strong>System tray widget</strong> for quick access to essential metrics</li>
+        <li><strong>Customizable interface</strong> (light/dark theme, font size)</li>
+        <li><strong>Export monitoring data</strong> for analysis</li>
+        <li><strong>Minimal resource usage</strong></li>
       </ul>
-      <p class="style8">2. Getting Started</p>
-      <blockquote>
-        <p><strong>2.1 Launching HardMon</strong></p>
-        <ul>
-          <li>Double-click the <strong>HardMon</strong> executable to start the application.</li>
-          <li>The main window will display hardware information in a structured view.</li>
-        </ul>
-        <p><strong>2.2 Main Interface Overview</strong></p>
-        <p>The main window consists of:</p>
-        <ul>
-          <li><strong>Monitor View Panel</strong>: Displays all hardware components and their metrics.</li>
-          <li><strong>Status Bar</strong>: Shows tips and shortcuts (updates every 5 seconds).</li>
-          <li><strong>Menu Bar</strong>: Contains options for settings, saving data, and exiting.</li>
-        </ul>
-      </blockquote>
-      <p class="style8">3. Using HardMon</p>
-      <blockquote>
-        <p><strong>3.1 Viewing Real-Time Data</strong></p>
-        <ul>
-          <li>Hardware metrics <strong><em>update every second</em></strong> automatically.</li>
-        </ul>
-        <p><strong>3.2 Saving Monitoring Data</strong></p>
-        <ul>
-          <li>Click <strong>File</strong> → <strong>Save</strong> Monitoring Data.</li>
-          <li>Choose a location and filename (default: <em>HardMon_YYYY-MM-DD-hhmmss.txt</em>).</li>
-          <li>Click <strong>Save</strong> to export all current hardware data as a text file.</li>
-        </ul>
-        <p><strong>3.3 Changing Themes</strong></p>
-        <p>HardMon supports Light and Dark themes:</p>
-        <ul>
-          <li><strong>Dark </strong>Theme: View → Dark (Default)</li>
-          <li><strong>Light </strong>Theme: View → Light</li>
-        </ul>
-        <p>Shortcuts:</p>
-        <ul>
-          <li><strong>Dark </strong>Theme: Ctrl + D</li>
-          <li><strong>Light </strong>Theme: Ctrl + L</li>
-        </ul>
-        <p><strong>3.4 Adjusting Font Size</strong></p>
-        <p>You can change the text size for better readability:</p>
-        <ul>
-          <li><strong>Default</strong>: View → Default Size (9pt)</li>
-          <li><strong>Medium</strong>: View → Medium (11pt)</li>
-          <li><strong>Large</strong>: View → Large (12pt)</li>
-        </ul>
-        <p>Shortcuts:</p>
-        <ul>
-          <li><strong>Default</strong> Size: Ctrl + Shift + D</li>
-          <li><strong>Medium</strong> Size: Ctrl + Shift + M</li>
-          <li><strong>Large</strong> Size: Ctrl + Shift + L</li>
-        </ul>
-      </blockquote>
-      <p class="style8">4. Understanding Hardware Metrics</p>
-      <blockquote>
-        <p><strong>4.1 CPU Information</strong></p>
-        <ul>
-          <li><strong>Clock</strong>: Current frequency of CPU cores.</li>
-          <li><strong>Load</strong>: CPU usage per core (%).</li>
-          <li><strong>Temperature</strong>: Core temperatures (°C).</li>
-          <li><strong>Power</strong>: Power consumption (Watts).</li>
-        </ul>
-        <p><strong>4.2 GPU Information</strong></p>
-        <ul>
-          <li><strong>Load</strong>: GPU utilization (%).</li>
-          <li><strong>Temperature</strong>: GPU temperature (°C).</li>
-          <li><strong>Clock</strong>: Current GPU core/memory clock speeds (MHz).</li>
-          <li><strong>Memory</strong>: VRAM usage (Used/Total).</li>
-        </ul>
-        <p><strong>4.3 RAM Information</strong></p>
-        <ul>
-          <li><strong>Load</strong>: Memory usage (%).</li>
-          <li><strong>Usage</strong>: Breakdown of used/available/total RAM.</li>
-        </ul>
-        <p><strong>4.4 HDD/SSD Information</strong></p>
-        <ul>
-          <li><strong>Temperature</strong>: Drive temperature (°C).</li>
-          <li><strong>Usage</strong>: Disk activity (%).</li>
-          <li><strong>Throughput</strong>: Read/Write speeds (MB/s). (<span class="style9">if Supported</span>)</li>
-        </ul>
-      </blockquote>
+
+      <p class="style8">2. Installation & Launch</p>
+      <p>HardMon does not require installation. Simply:</p>
+      <ol>
+        <li>Download the executable (<code>HardMon.exe</code>).</li>
+        <li>Run the program.</li>
+        <li>The main window will appear, displaying hardware information.</li>
+      </ol>
+
+      <p class="style8">3. User Interface Overview</p>
+      <p><strong>Main Window</strong></p>
+      <p>The primary interface organizes hardware data in a <strong>tree view</strong>:</p>
+      <ul>
+        <li><strong>System Information</strong>: Displays motherboard and BIOS details.</li>
+        <li><strong>CPU</strong>: Shows clock speeds, load, temperature, and power.</li>
+        <li><strong>GPU</strong>: Provides load, temperature, clock speeds, and memory usage.</li>
+        <li><strong>RAM</strong>: Displays usage (total, used, available).</li>
+        <li><strong>HDD/SSD</strong>: Shows temperature, usage, and throughput.</li>
+      </ul>
+
+      <p><strong>Toolbar & Menu Options</strong></p>
+      <ul>
+        <li><strong>File</strong>: Save monitoring data, exit.</li>
+        <li><strong>View</strong>: Toggle visibility of hardware components (CPU/GPU/RAM/HDD).</li>
+        <li><strong>Settings</strong>: Adjust theme (Light/Dark) and font size (Default/Medium/Large).</li>
+        <li><strong>Help</strong>: Access documentation, about, and support.</li>
+      </ul>
+
+      <p class="style8">4. Using HardMon</p>
+      <p><strong>Monitoring Hardware</strong></p>
+      <ol>
+        <li>Launch HardMon.</li>
+        <li>The application automatically detects and displays hardware metrics.</li>
+        <li>Expand nodes in the tree view to see detailed statistics.</li>
+      </ol>
+
+      <p><strong>Widget Mode</strong></p>
+      <ul>
+        <li>Click <strong>"Show Widget"</strong> in the menu to display a compact overlay.</li>
+        <li><strong>Drag</strong> the widget to reposition it.</li>
+        <li><strong>Right-click</strong> to access options:
+          <ul>
+            <li><strong>Always on top</strong>: Keeps the widget visible over other windows.</li>
+            <li><strong>Opacity</strong>: Adjust transparency (100% or 95%).</li>
+            <li><strong>Exit/Close</strong>: Hide the widget or quit HardMon.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><strong>Saving Data</strong></p>
+      <ol>
+        <li>Go to <strong>File → Save Monitoring Data</strong>.</li>
+        <li>Choose a location and save as a <code>.txt</code> file.</li>
+      </ol>
+
+      <p><strong>Customizing the Interface</strong></p>
+      <ul>
+        <li><strong>Theme</strong>: Toggle between <strong>Light</strong> and <strong>Dark</strong> mode.</li>
+        <li><strong>Font Size</strong>: Adjust text size (<strong>Default/Medium/Large</strong>).</li>
+        <li><strong>Component Visibility</strong>: Enable/disable CPU, GPU, RAM, or HDD sections.</li>
+      </ul>
+
       <p class="style8">5. Troubleshooting</p>
-      <blockquote>
-        <p><strong>5.1 Missing Data</strong></p>
-        <ul>
-          <li>The hardware does not support monitoring.</li>
-          <li>HardMon are not installed correctly.</li>
-        </ul>
-        <p><strong>5.2 High CPU Usage</strong></p>
-        <ul>
-          <li>HardMon runs a background thread for real-time updates.</li>
-          <li>If performance is impacted, close unnecessary applications.</li>
-        </ul>
-        <p><strong>5.3 Application Freezes</strong></p>
-        <ul>
-          <li>Ensure your system meets minimum requirements.</li>
-          <li>Restart HardMon if unresponsive.</li>
-        </ul>
-      </blockquote>
-      <p><strong>Need Further Assistance?</strong><br />
-      If you encounter issues or have suggestions, please contact <a href="mailto:arisohandriputra@gmail.com">arisohandriputra@gmail.com</a>. </p>
+      <p><strong>No GPU Detected</strong></p>
+      <ul>
+        <li>Ensure your GPU drivers are installed.</li>
+        <li>Some integrated GPUs may not report all metrics.</li>
+      </ul>
+
+      <p><strong>High CPU Usage</strong></p>
+      <ul>
+        <li>HardMon is optimized for low overhead, but if performance is impacted:</li>
+        <li>Close unnecessary applications.</li>
+        <li>Reduce the refresh rate (if configurable in future updates).</li>
+      </ul>
+
+      <p><strong>Widget Not Appearing</strong></p>
+      <ul>
+        <li>Check if the widget is minimized to the system tray.</li>
+        <li>Restart HardMon if the widget fails to load.</li>
+      </ul>
+
+      <p class="style8">6. Frequently Asked Questions (FAQ)</p>
+      <p><strong>Q: Does HardMon support all hardware?</strong><br />
+      A: HardMon works with most modern CPUs, GPUs, RAM, and storage devices. Some sensors may not be available on older hardware.</p>
+
+      <p><strong>Q: Can I run HardMon at startup?</strong><br />
+      A: Currently, you must manually launch HardMon. Future updates may include a startup option.</p>
+
+      <p><strong>Q: How do I report bugs or request features?</strong><br />
+      A: Contact the developer via email (arisohandriputra@gmail.com).</p>
+
+      <p class="style8">7. Support & Donations</p>
+      <p>HardMon is free to use. If you find it useful, consider supporting development:</p>
+      <ul>
+        <li><strong>Donate</strong>: Help fund improvements (contact developer for details).</li>
+        <li><strong>Feedback</strong>: Share suggestions for new features.</li>
+      </ul>
       <hr />
       <p class="style5">
         Copyright (c) 2015 - 2025 Ari Sohandri Putra. All rights reserved.
-        <br /><a href="License.txt">License terms</a>      </p>    </td>
+        <br /><a href="License.txt">License terms</a>
+      </p>
+    </td>
 
     <td width="22%" align="right" valign="top">
       <table width="229" border="1" cellpadding="3" cellspacing="3" bordercolor="ededed">
