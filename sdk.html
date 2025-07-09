@@ -37,11 +37,6 @@
     a:hover {
       color: #FF0000;
     }
-    .style4 {
-      font-size: large;
-      font-weight: bold;
-      color: #000000;
-    }
     .style5 {
       font-size: x-small;
     }
@@ -63,11 +58,12 @@
     word-wrap: normal;
   }
   .style12 {font-size: small; font-weight: bold; }
-  .style18 {font-size: small}
   .style19 {font-size: medium; font-weight: bold; color: #0033FF; }
   .style11 {	font-size: medium;
 	font-weight: bold;
 }
+  .style20 {font-size: small}
+  .style21 {font-size: medium; font-weight: bold; color: #0000FF; }
   </style>
 </head>
 <body>
@@ -82,17 +78,18 @@
         </tr>
       </table>
 
-      <p><strong>HardEngine.dll</strong> is a lightweight yet powerful .NET library designed for hardware monitoring on legacy and modern Windows systems. It provides real-time access to critical system metrics, including CPU, GPU, RAM, storage, network, battery, and audio device information.</p>
+      <p data-start="406" data-end="639"><strong>HardMonLib.dll</strong> is a compact and efficient .NET library designed to provide structured and categorized access to system hardware metrics, such as CPU temperature, RAM usage, GPU load, battery health, storage data, and network speed.</p>
+      <p data-start="641" data-end="799">This documentation outlines how to integrate and utilize HardMonLib.dll in your application using <strong data-start="741" data-end="747">C#</strong>, <strong data-start="749" data-end="759">VB.NET</strong>, or any other .NET-compatible language</p>
       <h3 class="style19">Key Features</h3>
       <ul>
-        <li><strong>Cross-Platform Compatibility</strong> – Supports <strong>.NET Framework 2.0+</strong> and <strong>Windows Vista+</strong></li>
-        <li><strong>Low System Impact</strong> – Optimized for performance on older hardware</li>
-        <li><strong>Comprehensive Monitoring</strong> – Covers CPU, GPU, RAM, Storage, Network, Battery, and Audio</li>
-        <li><strong>Simple Integration</strong> – Easy-to-use API for C# and VB.NET</li>
-        <li><strong>No External Dependencies</strong> – Works without requiring additional SDKs</li>
+        <li>Retrieve real-time data from CPU, GPU, RAM, storage, battery, and network interfaces.</li>
+        <li>Organize hardware data in a hierarchical structure.</li>
+        <li>Provides both current and maximum values for sensors.</li>
+        <li>Includes human-readable formatting (e.g., °C, %, GB, Mbps).</li>
+        <li>Lightweight and easy to integrate.</li>
       </ul>
       <h2 class="style19">System Requirements</h2>
-      <table width="534" border="0" cellspacing="3" cellpadding="3">
+      <table width="534" border="1" cellspacing="3" cellpadding="3">
         <tr>
           <td width="173" bgcolor="#FFFF00"><strong>Component</strong></td>
           <td width="182" bgcolor="#FFFF00"><strong>Minimum Requirement</strong></td>
@@ -119,179 +116,144 @@
           <td>Admin (Full Access)</td>
         </tr>
       </table>
-      <h2 class="style19">Installation</h2>
-      <h3 class="style12">Manual DLL Reference (Legacy Projects)</h3>
+      <h2 class="style19">Reference the Library</h2>
+      <h3 class="style12">In your project:</h3>
       <ol>
-        <li>Download HardEngine.dll from this official website. </li>
-        <li>Add Reference in Visual Studio
+        <li>Copy HardMonLib.dll to your project folder.</li>
+        <li>Add a reference:
           <ul>
-            <li>Right-click References → Add Reference → Browse → Select HardEngine.dll.</li>
+            <li>In <strong data-start="1377" data-end="1394">Visual Studio</strong>, right-click on <strong data-start="1411" data-end="1425">References</strong> → <strong data-start="1428" data-end="1445">Add Reference</strong> → <strong data-start="1448" data-end="1458">Browse</strong> → Select HardMonLib.dll.</li>
           </ul>
         </li>
       </ol>
-      <h2 class="style19">API Reference</h2>
-      <p>Core Class : HardwareMonitor</p>
-      <h4 class="style18">Constructor</h4>
-	    <blockquote>
-        <pre>public HardwareMonitor(bool enableBasicMode = false)</pre>
-	    <ul>
-	      <li>
-	        <p class="style5">enableBasicMode (Optional): Reduces permissions needed (limited metrics)</p>
-          </li>
-	      </ul>
-	    </blockquote>
-        <p class="style19">Key Methods</p>
-        <table width="601" border="0" cellspacing="3" cellpadding="3">
-          <tr>
-            <td width="173" bgcolor="#FFFF00"><strong>Method</strong></td>
-            <td width="182" bgcolor="#FFFF00"><strong>Return Type</strong></td>
-            <td width="216" bgcolor="#FFFF00"><strong>Description</strong></td>
-          </tr>
-          <tr>
-            <td><strong>GetCPUInfo()</strong></td>
-            <td><strong>CPUInfo</strong></td>
-            <td>Retrieves CPU details (temp, load, clock)</td>
-          </tr>
-          <tr>
-            <td><strong>GetGPUInfo()</strong></td>
-            <td><strong>GPUInfo</strong></td>
-            <td>Gets GPU stats (temp, usage, memory)</td>
-          </tr>
-          <tr>
-            <td><strong>GetRAMInfo()</strong></td>
-            <td><strong>RAMInfo</strong></td>
-            <td>Provides RAM usage (total, used, available)</td>
-          </tr>
-          <tr>
-            <td><strong>GetStorageInfo()</strong></td>
-            <td><strong>List&lt;StorageInfo&gt;</strong></td>
-            <td>Lists all drives (capacity, health, temp)</td>
-          </tr>
-          <tr>
-            <td><strong>GetNetworkInfo()</strong></td>
-            <td><strong>List&lt;NetworkInfo&gt;</strong></td>
-            <td>Network adapters (speed, IP, usage)</td>
-          </tr>
-          <tr>
-            <td><strong>GetBatteryInfo()</strong></td>
-            <td><strong>BatteryInfo</strong></td>
-            <td>Battery status (%, health, time remaining)</td>
-          </tr>
-          <tr>
-            <td><strong>GetAudioDevices()</strong></td>
-            <td><strong>List&lt;AudioDevice&gt;</strong></td>
-            <td>Audio endpoints (volume, mute status)</td>
-          </tr>
-          <tr>
-            <td><strong>StartMonitoring()</strong></td>
-            <td><strong>void</strong></td>
-            <td>Begins real-time updates</td>
-          </tr>
-          <tr>
-            <td><strong>StopMonitoring()</strong></td>
-            <td><strong>void</strong></td>
-            <td>Safely stops monitoring</td>
-          </tr>
-        </table>
-        <p class="style19">Usage Example</p>
-        <p><strong>Example 1 : Basic CPU &amp; RAM monitoring (C#)</strong></p>
-          <blockquote>
-        <pre>using System;
-using HardEngine;
+      <p>&nbsp;</p>
+      <h2 class="style19">Usage Example</h2>
+      <p><strong>C#</strong></p>
+      <blockquote>
+        <pre>using HardMonLib;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows.Forms;
 
-class Program {
-    static void Main() {
-        var monitor = new HardwareMonitor();
-        
-        var cpu = monitor.GetCPUInfo();
-        var ram = monitor.GetRAMInfo();
+public class MainForm : Form
+{
+    private Hardware monitor = new Hardware();
 
-        Console.WriteLine($"CPU: {cpu.Name}");
-        Console.WriteLine($"Temperature: {cpu.Temperature}°C");
-        Console.WriteLine($"Load: {cpu.Load}%");
-        
-        Console.WriteLine($"RAM Usage: {ram.UsedGB} / {ram.TotalGB} GB");
-        
-        monitor.StopMonitoring();
+    private void button1_Click(object sender, EventArgs e)
+    {
+        List<Hardware.HardwareNode> data = monitor.GetAllHardwareData();
+
+        foreach (var node in data)
+        {
+            Debug.WriteLine($"Hardware: {node.Name} [{node.HardwareType}]");
+            foreach (var category in node.Children)
+            {
+                var cat = (Hardware.SensorCategoryNode)category;
+                Debug.WriteLine($" - Category: {cat.CategoryName}");
+                foreach (var sensor in cat.Children)
+                {
+                    Debug.WriteLine($"    {sensor.SensorName}: {sensor.Value} (Max: {sensor.Max})");
+                }
+            }
+        }
     }
 }</pre>
-	    </blockquote>
-          <p><strong>Example 2 : Network &amp; Battery Check (VB.NET)</strong></p>
-                    <blockquote>
-        <pre>Imports HardEngine
+        <p>&nbsp;</p>
+      </blockquote>
+        <p><strong>VB.NET</strong></p>
+      <blockquote>
+          <pre>Imports HardMonLib
 
-Module Module1
-    Sub Main()
-        Dim monitor As New HardwareMonitor()
-        
-        Dim netInfo = monitor.GetNetworkInfo()
-        Dim battery = monitor.GetBatteryInfo()
-        
-        Console.WriteLine("Network Adapters:")
-        For Each adapter In netInfo
-            Console.WriteLine($"{adapter.Name}: {adapter.DownloadSpeed} Kbps")
+Public Class Form1
+    Dim monitor As New Hardware()
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim data As List(Of Hardware.HardwareNode) = monitor.GetAllHardwareData()
+
+        For Each node As Hardware.HardwareNode In data
+            Debug.WriteLine("Hardware: " & node.Name & " [" & node.HardwareType & "]")
+            For Each category In node.Children
+                Dim cat = CType(category, Hardware.SensorCategoryNode)
+                Debug.WriteLine(" - Category: " & cat.CategoryName)
+                For Each sensor In cat.Children
+                    Debug.WriteLine("    " & sensor.SensorName & ": " & sensor.Value & " (Max: " & sensor.Max & ")")
+                Next
+            Next
         Next
-        
-        Console.WriteLine($"Battery: {battery.Percentage}% ({battery.Status})")
-        
-        monitor.StopMonitoring()
     End Sub
-End Module</pre>
-        </blockquote>
-                    <p class="style19">      Best Practices</p>
-                    <p><strong>Performance Optimization</strong></p>
-                    <ul>
-                      <li>Avoid frequent polling (use StartMonitoring() for real-time updates).</li>
-                      <li>Cache static data (e.g, CPU Name, GPU Model).</li>
-                    </ul>
-                    <p><strong>Error Handling</strong></p>
-                                <blockquote>
-        <pre>try {
-    var gpu = monitor.GetGPUInfo();
-} catch (HardwareException ex) {
-    Console.WriteLine($"Error: {ex.Message}");
-}</pre>
-        </blockquote>
-                                <p>      <span class="style12">Admin VS. User-Mode</span></p>
-                                <ul>
-                                  <li><strong>Admin Privileges</strong> required for:
-                                    <ul>
-                                      <li>CPU/GPU Temperatures.</li>
-                                      <li>Detailed storage health. </li>
-                                      <li>Battery wear level.</li>
-                                    </ul>
-                                  </li>
-                                  <li><strong>User-Mode</strong> provides basic metrics (CPU loads, RAM usage).</li>
-                                </ul>
-                                <p class="style19">Troubleshooting</p>
-                                <table width="534" border="0" cellspacing="3" cellpadding="3">
-                                  <tr>
-                                    <td width="173" bgcolor="#FFFF00"><strong>Issue</strong></td>
-                                    <td width="182" bgcolor="#FFFF00"><strong>Solution</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><span class="style12">&quot;Access Denied&quot; Error </span></td>
-                                    <td>Run as Administrator </td>
-                                  </tr>
-                                  <tr>
-                                    <td><span class="style12">Missing GPU Data </span></td>
-                                    <td>Install latest GPU drivers </td>
-                                  </tr>
-                                  <tr>
-                                    <td><span class="style12">Battery not detected </span></td>
-                                    <td>Check power management settings </td>
-                                  </tr>
-                                  <tr>
-                                    <td><span class="style12">No network stats </span></td>
-                                    <td>Enable network adapter in OS </td>
-                                  </tr>
-                                </table>
-                                <p class="style19">License &amp; Compliance</p>
-                                <ul>
-                                  <li>License : <a href="License.txt">Read HardMon license terms</a></li>
-                                  <li>Attribution : Required if redistributed</li>
-                                  <li>Support : E-mail <a href="mailto:arisohandriputra@gmail.com">arisohandriputra@gmail.com  </a></li>
-                                </ul>
+End Class
+</pre>
+      </blockquote>
+      <p class="style19">Class Structure</p>
+      <p class="style12">HardwareNode</p>
+      <p class="style20">Represents a top-level hardware component (e.g., CPU, GPU).</p>
+      <ul>
+        <li><strong>Name</strong> <em data-start="3383" data-end="3393">(String)</em> – Display name of the hardware.</li>
+        <li><strong>HardwareType</strong> <em data-start="3443" data-end="3453">(String)</em> – Type of the hardware (e.g., CPU, GPU, Battery).</li>
+        <li><strong>Children</strong> <em data-start="3517" data-end="3547">(List of SensorCategoryNode)</em> – Collection of grouped sensors.</li>
+      </ul>
+      <p class="style19">SensorCategoryNode</p>
+      <p>Represents a logical category of sensors (e.g., Temperatures, Loads).</p>
+      <ul>
+        <li><strong>CategoryName</strong> <em data-start="3702" data-end="3712">(String)</em> – The name of the sensor group.</li>
+        <li><strong>Children</strong> <em data-start="3758" data-end="3780">(List of SensorNode)</em> – Individual sensors in this category.</li>
+      </ul>
+      <p class="style19">SensorNode</p>
+      <p>Represents a single sensor reading.</p>
+      <ul>
+        <li><strong>SensorName</strong> <em data-start="3897" data-end="3907">(String)</em> – The name of the sensor (e.g., Core #1).</li>
+        <li><strong>Value</strong> <em data-start="3960" data-end="3970">(String)</em> – Current sensor value with units.</li>
+        <li><strong>Max</strong> <em data-start="4014" data-end="4024">(String)</em> – Maximum recorded value with units.</li>
+      </ul>
+      <p class="style21">Components Monitored</p>
+      <table width="471" border="1" cellspacing="3" cellpadding="3">
+        <tr>
+          <td width="173" bgcolor="#FFFF00"><strong>Component</strong></td>
+          <td width="182" bgcolor="#FFFF00"><strong>Details</strong></td>
+        </tr>
+        <tr>
+          <td><strong>CPU</strong></td>
+          <td>Clock speed, load %, temperature, power usage</td>
+        </tr>
+        <tr>
+          <td><strong>GPU</strong></td>
+          <td>Load %, temperature, VRAM usage (if available)</td>
+        </tr>
+        <tr>
+          <td><strong>RAM</strong></td>
+          <td>Total and used memory in GB</td>
+        </tr>
+        <tr>
+          <td><strong>Battery</strong></td>
+          <td>Charge level, health %, voltage, chemistry type)</td>
+        </tr>
+        <tr>
+          <td><strong>Storage</strong></td>
+          <td>Temperature, load %, capacity (if supported)</td>
+        </tr>
+        <tr>
+          <td><strong>Network</strong></td>
+          <td>Upload/download speed in real-time</td>
+        </tr>
+        <tr>
+          <td><strong>Mainboard</strong></td>
+          <td>Name, baseboard info</td>
+        </tr>
+      </table>
+      <p class="style21">Notes</p>
+      <ul>
+        <li>The network statistics calculate real-time bandwidth based on historical deltas.</li>
+        <li>All outputs are returned in string format, suitable for direct display.</li>
+      </ul>
+      <p class="style21">Best Practices</p>
+      <ul>
+        <li>Call <strong>GetAllHardwareData()</strong> periodically (e.g., via timer) for live updates.</li>
+        <li>Avoid querying in tight loops to prevent high CPU usage.</li>
+        <li>Safely handle exceptions if certain sensors or hardware are not available.</li>
+      </ul>
+      <p><span class="style21">License terms </span></p>
+      <p>Read HardMon <a href="License.txt">License terms here</a>. </p>
       <hr />
       <p class="style5">
         Copyright (c) 2015 - 2025 <a href="author.html">Ari Sohandri Putra.</a> All rights reserved.
@@ -304,10 +266,10 @@ End Module</pre>
       <tr>
         <td><table width="219" border="0" cellspacing="3" cellpadding="3">
             <tr>
-              <td align="center"><a href="https://paypal.me/AriSohandriPutraID/" target="_blank"><img src="bin/paypal.png" alt="Paypal" width="210" height="99" border="0" /></a></td>
+              <td align="center"><a href="https://paypal.me/AriSohandriPutraID/" target="_blank"><img src="bin/paypal.png" alt="Paypal" width="100" border="0" /></a></td>
             </tr>
             <tr>
-              <td align="center"><a href="https://buymeacoffee.com/hardmon" target="_blank"><img src="bin/buymecoffee.png" alt="Buy Me a Coffee" width="210" height="105" border="0" /></a></td>
+              <td align="center"><a href="https://buymeacoffee.com/hardmon" target="_blank"><img src="bin/buymecoffee.png" alt="Buy Me a Coffee" width="100" border="0" /></a></td>
             </tr>
         </table></td>
       </tr>
