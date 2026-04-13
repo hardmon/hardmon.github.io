@@ -66,7 +66,8 @@
         </tr>
       </table>
 
-      <p class="style3"><a href="/"><strong>HardMon</strong></a> is a lightweight and efficient system monitor that displays real-time hardware stats in a clean, categorized layout. It tracks sensor readings for your CPU, GPU, memory, battery, storage, and network with precision. Running quietly in the background, HardMon also supports data export, refresh options, and interface customization—perfect for both casual users and IT enthusiasts.</p>
+      <p class="style3"><a href="/"><strong>HardMon 2.3 – <i>OyenX Edition</i></strong></a> is a lightweight, powerful, and modern hardware monitoring tool designed for real-time system analysis. Built with efficiency in mind, it provides accurate sensor data across CPU, GPU, memory, storage, battery, and network components in a clean and structured interface.
+This edition introduces an integrated <strong>Web Server Monitoring System</strong>, allowing users to remotely access hardware statistics through a browser in real-time. Whether you are a casual user or an advanced IT enthusiast, HardMon delivers reliable performance monitoring both locally and over the network.</p>
       <p class="style11">Download HardMon  (Windows x86-x64 bit)</p>
       <table width="822" border="0" cellspacing="3" cellpadding="3">
         <tr>
@@ -85,10 +86,21 @@
           <td width="82" align="center" bgcolor="#00FFFF">Win11</td>
         </tr>
         <tr>
-          <td height="30" bgcolor="#66FF99"><strong>2.2 (Orca Edition) </strong></td>
-          <td align="center" bgcolor="#66FF99"><strong>1.66 MB </strong></td>
+          <td height="30" bgcolor="#66FF99"><strong>2.3 (OyenX Edition) </strong></td>
+          <td align="center" bgcolor="#66FF99"><strong>2.09 MB </strong></td>
           <td align="center" bgcolor="#66FF99"><strong>x86-x64</strong></td>
-          <td align="center" bgcolor="#66FF99"><a href="bin/release/HardMon_x86_64_Orca.zip"><strong>Download</strong></a></td>
+          <td align="center" bgcolor="#66FF99"><a href="bin/release/HardMon_x86_64_OyenX.zip"><strong>Download</strong></a></td>
+          <td align="center" bgcolor="#00FF00">Yes</td>
+          <td align="center" bgcolor="#00FF00">Yes</td>
+          <td align="center" bgcolor="#00FF00">Yes</td>
+          <td align="center" bgcolor="#00FF00">Yes</td>
+          <td align="center" bgcolor="#00FF00">Yes</td>
+        </tr>
+        <tr>
+          <td height="30" bgcolor="#EDEDED">2.2 (Orca Edition)</td>
+          <td align="center" bgcolor="#EDEDED">1.66 MB</td>
+          <td align="center" bgcolor="#EDEDED">x86-x64</td>
+          <td align="center" bgcolor="#EDEDED"><a href="bin/release/HardMon_x86_64_Orca.zip">Download</a></td>
           <td align="center" bgcolor="#FF0000">No</td>
           <td align="center" bgcolor="#FF0000">No</td>
           <td align="center" bgcolor="#FF0000">No</td>
@@ -192,48 +204,59 @@
         <li><strong>Windows</strong> operating system (Vista/7/8/8.1/10/11)</li>
         <li>Support both 32-bit and 64-bi</li>
       </ul>
-      <p class="style3"><img src="bin/Capture.png" width="599" height="247" /></p>
+      <p class="style3"><img src="bin/Capture.png" width="724" /></p>
       <p class="style11">Key Features</p>
       <ul>
         <li><strong>Real-Time Sensor Monitoring
           </strong>
           <ul>
-            <li> Continuously tracks and displays temperature, voltage, usage, fan speed, and battery health across multiple hardware components.</li>
+            <li>Continuously tracks temperature, voltage, usage, fan speed, power, and battery health with high accuracy.</li>
           </ul>
         </li>
-        <li><strong>Categorized Sensor Display</strong>
+        <li><strong>Structured & Categorized Display</strong>
           <ul>
-            <li>Hardware sensors are shown in a clear, expandable layout grouped by component and type.</li>
+            <li>Sensors are grouped by hardware and category for maximum readability using an expandable tree layout.</li>
           </ul>
         </li>
-        <li><strong>Automatic Battery Report
-          </strong>
+        <li><strong>Integrated Web Server <strong>(NEW)</strong></strong>
           <ul>
-            <li>Automatically generates a detailed battery report using built-in Windows tools.</li>
+            <li>Monitor your system remotely via browser using local network access (default port: 8080).</li>
           </ul>
         </li>
-        <li><strong>Save Sensor Readings
-          </strong>
+        <li><strong>Automatic Battery Report (Smart Detection)</strong>
           <ul>
-            <li>Export current monitoring data to a neatly formatted .txt file for logging or analysis.</li>
+            <li>Generates a battery report only when a battery is detected, optimizing performance and avoiding unnecessary execution.</li>
           </ul>
         </li>
-        <li><strong>Custom Font and Grid Line Support
-          </strong>
+        <li><strong>Live Sensor Monitor Window</strong>
           <ul>
-            <li>Adjust the font and grid line used in the monitoring display to match your preferences.</li>
+            <li>Double-click any sensor to open a dedicated real-time monitoring window for focused tracking.</li>
           </ul>
         </li>
-        <li><strong>Manual Refresh
-          </strong>
+        <li><strong>Export Monitoring Data</strong>
           <ul>
-            <li>Reloads and reinitializes hardware monitoring without restarting the program.</li>
+            <li>Save current sensor readings into a structured .txt file for logging or diagnostics.</li>
+          </ul>
+        </li>
+        <li><strong>Customizable Interface</strong>
+          <ul>
+            <li>Adjust fonts and grid styles (None, Horizontal, Vertical, Both) to match your preference.</li>
+          </ul>
+        </li>
+        <li><strong>Manual Refresh Engine</strong>
+          <ul>
+            <li>Reloads all hardware data and reinitializes sensors without restarting the application.</li>
+          </ul>
+        </li>
+        <li><strong>Always-On-Top Mode</strong>
+          <ul>
+            <li>Keep HardMon visible above all windows for continuous monitoring.</li>
           </ul>
         </li>
       </ul>
       <p class="style11">Monitoring Interface</p>
       <ul>
-        <li>Sensors are displayed with the following columns:
+        <li>Sensor data is displayed with structured columns:
           <ol>
             <li><strong>Sensor</strong> – The name or label of the hardware sensor.</li>
             <li><strong>Value</strong> – The current reading (e.g., temperature, usage).</li>
@@ -242,6 +265,21 @@
         </li>
         <li>Each hardware component is grouped logically for better readability.</li>
         <li>Visual icons represent each category such as CPU, GPU, RAM, battery, storage, and more.</li>
+      </ul>
+      <p class="style11">Web Server Access (NEW)</p>
+      <ul>
+        <li>Start the server via menu: <Strong>Web Server</Strong> → <strong>Start</strong></li>
+        <ol>
+          <strong>Default access:</strong>
+          <ul><a href="http://localhost:8080"><b>http://localhost:8080</b></a> or <b>http://[Your-IP]:8080</b></ul>
+        </ol>
+        <ol><strong>Features:</strong>
+          <ul>Real-time monitoring via browser</ul>
+          <ul>JSON-based hardware data</ul>
+          <ul>Accessible across local network</ul>
+          <ul>Example: <i>Monitor your PC from phone, laptop, or another device in the same network.
+</i></ul>
+        </ol>
       </ul>
       <p class="style11">Hotkey</p>
       <ul>
@@ -274,7 +312,7 @@
       </ol>
       <hr />
       <p class="style5">
-        Copyright (c) 2015 - 2025 <a href="author.html">Ari Sohandri Putra.</a> All rights reserved.
+        Copyright (c) 2015 - 2026 <a href="author.html">Ari Sohandri Putra.</a> All rights reserved.
     <br /><a href="License.txt">License terms</a>      </p>    </td>
 
     <td width="22%" align="right" valign="top">
@@ -286,9 +324,6 @@
           <td><table width="219" border="0" cellspacing="3" cellpadding="3">
             <tr>
               <td align="center"><a href="https://paypal.me/AriSohandriPutraID/" target="_blank"><img src="bin/paypal.png" alt="Paypal" width="100" border="0" /></a></td>
-            </tr>
-            <tr>
-              <td align="center"><a href="https://buymeacoffee.com/hardmon" target="_blank"><img src="bin/buymecoffee.png" alt="Buy Me a Coffee" width="100" border="0" /></a></td>
             </tr>
           </table></td>
         </tr>

@@ -1,5 +1,5 @@
 HardMon Monitoring Tools
-Copyright (C) 2015-2025 Ari Sohandri Putra
+Copyright (C) 2015-2026 Ari Sohandri Putra
 All Rights Reserved
 Web:		https://hardmon.github.io/
 E-mail:		arisohandriputra@gmail.com
