@@ -37,10 +37,6 @@
     a:hover {
       color: #FF0000;
     }
-    .style5 {
-      font-size: x-small;
-    }
-  .style7 {font-size: x-small; color: #FF0000; }
   /* New pre styling */
   pre {
     background-color: #f5f5f5;
@@ -59,11 +55,11 @@
   }
   .style12 {font-size: small; font-weight: bold; }
   .style19 {font-size: medium; font-weight: bold; color: #0033FF; }
-  .style11 {	font-size: medium;
+  .style21 {font-size: medium; font-weight: bold; color: #0000FF; }
+  .style22 {
+	font-size: medium;
 	font-weight: bold;
 }
-  .style20 {font-size: small}
-  .style21 {font-size: medium; font-weight: bold; color: #0000FF; }
   </style>
 </head>
 <body>
@@ -78,6 +74,7 @@
         </tr>
       </table>
 
+      <p data-start="406" data-end="639"><a href="/"><strong>&lt; Back Home</strong></a><strong> </strong></p>
       <p data-start="406" data-end="639"><strong>HardMonLib.dll</strong> is a compact and efficient .NET library designed to provide structured and categorized access to system hardware metrics, such as CPU temperature, RAM usage, GPU load, battery health, storage data, and network speed.</p>
       <p data-start="641" data-end="799">This documentation outlines how to integrate and utilize HardMonLib.dll in your application using <strong data-start="741" data-end="747">C#</strong>, <strong data-start="749" data-end="759">VB.NET</strong>, or any other .NET-compatible language</p>
       <h3 class="style19">Key Features</h3>
@@ -128,9 +125,19 @@
       </ol>
       <p>&nbsp;</p>
       <h2 class="style19">Usage Example</h2>
-      <p><strong>C#</strong></p>
-      <blockquote>
-        <pre>using HardMonLib;
+
+<p>This section demonstrates how to properly use <strong>HardMonLib.dll</strong> based on its actual data structure and features.</p>
+
+<p><strong>Important Notes:</strong></p>
+<ul>
+  <li>The method <strong>GetAllHardwareData()</strong> returns a hierarchical structure starting from <strong>System → Mainboard → Hardware → Categories → Sensors</strong>.</li>
+  <li>All sensor values are already formatted as strings and ready to display.</li>
+  <li>Some hardware (like Battery or Network) may not be available depending on the system.</li>
+</ul>
+
+<p><strong>C# Example (Recommended Usage)</strong></p>
+<blockquote>
+<pre>using HardMonLib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -142,165 +149,329 @@ public class MainForm : Form
 
     private void button1_Click(object sender, EventArgs e)
     {
-        List<Hardware.HardwareNode> data = monitor.GetAllHardwareData();
+        var systems = monitor.GetAllHardwareData();
 
-        foreach (var node in data)
+        foreach (var system in systems)
         {
-            Debug.WriteLine($"Hardware: {node.Name} [{node.HardwareType}]");
-            foreach (var category in node.Children)
+            Debug.WriteLine("System: " + system.Name);
+
+            foreach (var mainboard in system.Children)
             {
-                var cat = (Hardware.SensorCategoryNode)category;
-                Debug.WriteLine($" - Category: {cat.CategoryName}");
-                foreach (var sensor in cat.Children)
+                var mb = (Hardware.HardwareNode)mainboard;
+                Debug.WriteLine(" Mainboard: " + mb.Name);
+
+                foreach (var hardware in mb.Children)
                 {
-                    Debug.WriteLine($"    {sensor.SensorName}: {sensor.Value} (Max: {sensor.Max})");
+                    var hw = (Hardware.HardwareNode)hardware;
+                    Debug.WriteLine("  Hardware: " + hw.Name + " [" + hw.HardwareType + "]");
+
+                    foreach (var category in hw.Children)
+                    {
+                        var cat = (Hardware.SensorCategoryNode)category;
+                        Debug.WriteLine("   Category: " + cat.CategoryName);
+
+                        foreach (var sensor in cat.Children)
+                        {
+                            Debug.WriteLine("     " + sensor.SensorName + ": " + sensor.Value + " (Max: " + sensor.Max + ")");
+                        }
+                    }
                 }
             }
         }
     }
 }</pre>
-        <p>&nbsp;</p>
-      </blockquote>
-        <p><strong>VB.NET</strong></p>
-      <blockquote>
-          <pre>Imports HardMonLib
+</blockquote>
+
+<p><strong>VB.NET Example</strong></p>
+<blockquote>
+<pre>Imports HardMonLib
 
 Public Class Form1
     Dim monitor As New Hardware()
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim data As List(Of Hardware.HardwareNode) = monitor.GetAllHardwareData()
+        Dim systems = monitor.GetAllHardwareData()
 
-        For Each node As Hardware.HardwareNode In data
-            Debug.WriteLine("Hardware: " & node.Name & " [" & node.HardwareType & "]")
-            For Each category In node.Children
-                Dim cat = CType(category, Hardware.SensorCategoryNode)
-                Debug.WriteLine(" - Category: " & cat.CategoryName)
-                For Each sensor In cat.Children
-                    Debug.WriteLine("    " & sensor.SensorName & ": " & sensor.Value & " (Max: " & sensor.Max & ")")
+        For Each system In systems
+            Debug.WriteLine("System: " & system.Name)
+
+            For Each mainboard In system.Children
+                Dim mb = CType(mainboard, Hardware.HardwareNode)
+                Debug.WriteLine(" Mainboard: " & mb.Name)
+
+                For Each hardware In mb.Children
+                    Dim hw = CType(hardware, Hardware.HardwareNode)
+                    Debug.WriteLine("  Hardware: " & hw.Name & " [" & hw.HardwareType & "]")
+
+                    For Each category In hw.Children
+                        Dim cat = CType(category, Hardware.SensorCategoryNode)
+                        Debug.WriteLine("   Category: " & cat.CategoryName)
+
+                        For Each sensor In cat.Children
+                            Debug.WriteLine("     " & sensor.SensorName & ": " & sensor.Value & " (Max: " & sensor.Max & ")")
+                        Next
+                    Next
                 Next
             Next
         Next
     End Sub
 End Class
 </pre>
-      </blockquote>
-      <p class="style19">Class Structure</p>
-      <p class="style12">HardwareNode</p>
-      <p class="style20">Represents a top-level hardware component (e.g., CPU, GPU).</p>
-      <ul>
-        <li><strong>Name</strong> <em data-start="3383" data-end="3393">(String)</em> – Display name of the hardware.</li>
-        <li><strong>HardwareType</strong> <em data-start="3443" data-end="3453">(String)</em> – Type of the hardware (e.g., CPU, GPU, Battery).</li>
-        <li><strong>Children</strong> <em data-start="3517" data-end="3547">(List of SensorCategoryNode)</em> – Collection of grouped sensors.</li>
-      </ul>
-      <p class="style19">SensorCategoryNode</p>
-      <p>Represents a logical category of sensors (e.g., Temperatures, Loads).</p>
-      <ul>
-        <li><strong>CategoryName</strong> <em data-start="3702" data-end="3712">(String)</em> – The name of the sensor group.</li>
-        <li><strong>Children</strong> <em data-start="3758" data-end="3780">(List of SensorNode)</em> – Individual sensors in this category.</li>
-      </ul>
-      <p class="style19">SensorNode</p>
-      <p>Represents a single sensor reading.</p>
-      <ul>
-        <li><strong>SensorName</strong> <em data-start="3897" data-end="3907">(String)</em> – The name of the sensor (e.g., Core #1).</li>
-        <li><strong>Value</strong> <em data-start="3960" data-end="3970">(String)</em> – Current sensor value with units.</li>
-        <li><strong>Max</strong> <em data-start="4014" data-end="4024">(String)</em> – Maximum recorded value with units.</li>
-      </ul>
-      <p class="style21">Components Monitored</p>
-      <table width="471" border="1" cellspacing="3" cellpadding="3">
-        <tr>
-          <td width="173" bgcolor="#FFFF00"><strong>Component</strong></td>
-          <td width="182" bgcolor="#FFFF00"><strong>Details</strong></td>
-        </tr>
-        <tr>
-          <td><strong>CPU</strong></td>
-          <td>Clock speed, load %, temperature, power usage</td>
-        </tr>
-        <tr>
-          <td><strong>GPU</strong></td>
-          <td>Load %, temperature, VRAM usage (if available)</td>
-        </tr>
-        <tr>
-          <td><strong>RAM</strong></td>
-          <td>Total and used memory in GB</td>
-        </tr>
-        <tr>
-          <td><strong>Battery</strong></td>
-          <td>Charge level, health %, voltage, chemistry type)</td>
-        </tr>
-        <tr>
-          <td><strong>Storage</strong></td>
-          <td>Temperature, load %, capacity (if supported)</td>
-        </tr>
-        <tr>
-          <td><strong>Network</strong></td>
-          <td>Upload/download speed in real-time</td>
-        </tr>
-        <tr>
-          <td><strong>Mainboard</strong></td>
-          <td>Name, baseboard info</td>
-        </tr>
-      </table>
-      <p class="style21">Notes</p>
-      <ul>
-        <li>The network statistics calculate real-time bandwidth based on historical deltas.</li>
-        <li>All outputs are returned in string format, suitable for direct display.</li>
-      </ul>
-      <p class="style21">Best Practices</p>
-      <ul>
-        <li>Call <strong>GetAllHardwareData()</strong> periodically (e.g., via timer) for live updates.</li>
-        <li>Avoid querying in tight loops to prevent high CPU usage.</li>
-        <li>Safely handle exceptions if certain sensors or hardware are not available.</li>
-      </ul>
-      <p><span class="style21">License terms </span></p>
-      <p>Read HardMon <a href="License.txt">License terms here</a>. </p>
-      <hr />
-      <p class="style5">
-        Copyright (c) 2015 - 2026 <a href="author.html">Ari Sohandri Putra.</a> All rights reserved.
-        <br /><a href="License.txt">License terms</a>      </p>    </td>
+</blockquote>
 
-    <td width="22%" align="right" valign="top"><table width="229" border="0" cellspacing="2" cellpadding="2">
-      <tr>
-        <td><span class="style11">Support Development </span></td>
-      </tr>
-      <tr>
-        <td><table width="219" border="0" cellspacing="3" cellpadding="3">
-            <tr>
-              <td align="center"><a href="https://paypal.me/ariprojectID" target="_blank"><img src="bin/paypal.png" alt="Paypal" width="100" border="0" /></a></td>
-            </tr>
-        </table></td>
-      </tr>
-    </table>
-      <table width="229" border="1" cellpadding="3" cellspacing="3" bordercolor="ededed">
-        <tr>
-          <td width="217" bgcolor="#66FF99"><strong>E-Mail</strong></td>
-        </tr>
-        <tr>
-          <td bgcolor="ededed"><a href="mailto:arisohandriputra@gmail.com">arisohandriputra@gmail.com</a></td>
-        </tr>
-        <tr>
-          <td bgcolor="#66FF99"><strong>Quick Access</strong></td>
-        </tr>
-        <tr>
-          <td bgcolor="ededed"><a href="/">Homepage </a><a href="guide.html"></a></td>
-        </tr>
-        <tr>
-          <td bgcolor="ededed"><a href="sdk.html">SDK Documentation </a><a href="guide.html"><span class="style7">*</span> <span class="style7">Active</span></a></td>
-        </tr>
-        <tr>
-          <td bgcolor="ededed"><a href="webserver.html">Web Server Monitoring</a></td>
-        </tr>
-        <tr>
-          <td bgcolor="ededed"><a href="author.html">Author</a></td>
-        </tr>
-        <tr>
-          <td bgcolor="#66FF99"><strong>Tag</strong></td>
-        </tr>
-        <tr>
-          <td bgcolor="ededed"><a href="#">Hardware</a> <a href="#">Microsoft</a> <a href="#">Windows</a> <a href="#">CPU</a> <a href="#">GPU</a> <a href="#">RAM</a> <a href="#">HDD</a> <a href="#">Display</a> <a href="#">Monitor</a> <a href="#">Clock</a> <a href="#">Load</a> <a href="#">Temperature</a> <a href="#">Power</a> </td>
-        </tr>
-      </table></td>
+<h2 class="style19">Built-in Web Server</h2>
+
+<p>HardMonLib includes a lightweight built-in web server that allows you to monitor hardware in real-time via a web browser.</p>
+
+<p><strong>Start Web Server (C#)</strong></p>
+<blockquote>
+<pre>Hardware monitor = new Hardware();
+
+// Start server on default port (8080 or next available)
+monitor.StartWebServer();
+
+// Or run async (recommended for UI apps)
+monitor.StartWebServerAsync();
+
+// Get URL
+string url = monitor.GetWebServerURL();
+Console.WriteLine(url);
+</pre>
+</blockquote>
+
+<p><strong>Access from Browser:</strong></p>
+<ul>
+  <li><strong>Main dashboard:</strong> http://localhost:8080/</li>
+  <li><strong>JSON API:</strong> http://localhost:8080/api</li>
+</ul>
+
+<p><strong>Stop Web Server</strong></p>
+<blockquote>
+<pre>monitor.StopWebServer();</pre>
+</blockquote>
+
+<p><strong>Notes:</strong></p>
+<ul>
+  <li>The port is automatically adjusted if already in use.</li>
+  <li>The dashboard updates every second in real-time.</li>
+  <li>JSON API provides structured data for custom dashboards.</li>
+</ul>
+<h2 class="style19">Data Structure Diagram</h2>
+
+<p>This diagram illustrates the hierarchical structure returned by <strong>GetAllHardwareData()</strong>.</p>
+
+<pre>
+System (HardwareNode)
+│
+└── Mainboard (HardwareNode)
+    │
+    ├── CPU (HardwareNode)
+    │   ├── Clocks (SensorCategoryNode)
+    │   │   ├── Core #1 : 3600 MHz
+    │   │   └── Core #2 : 3600 MHz
+    │   │
+    │   ├── Temperatures (SensorCategoryNode)
+    │   │   ├── Core #1 : 55°C (Max: 75°C)
+    │   │   └── Core #2 : 53°C (Max: 72°C)
+    │   │
+    │   └── Loads (SensorCategoryNode)
+    │       ├── Total : 35 %
+    │       └── Core #1 : 40 %
+    │
+    ├── GPU (HardwareNode)
+    │   ├── Temperatures
+    │   └── Loads
+    │
+    ├── RAM (HardwareNode)
+    │   └── Memory
+    │       ├── Total RAM : 16 GB
+    │       └── Used RAM : 8 GB
+    │
+    ├── HDD / SSD (HardwareNode)
+    │   ├── Temperatures
+    │   └── Loads
+    │
+    ├── Battery (HardwareNode) [Optional]
+    │   └── Battery Info
+    │       ├── Charge : 85 %
+    │       ├── Health : 92 %
+    │       └── Voltage : 11.4 V
+    │
+    └── Network (HardwareNode) [Optional]
+        └── Network Speed
+            ├── Download : 25 Mbps
+            └── Upload : 5 Mbps
+</pre>
+<p><strong>Structure Explanation:</strong></p>
+<ul>
+  <li><strong>System</strong> – Root node representing the current computer.</li>
+  <li><strong>Mainboard</strong> – Container for all detected hardware components.</li>
+  <li><strong>HardwareNode</strong> – Individual hardware (CPU, GPU, RAM, etc.).</li>
+  <li><strong>SensorCategoryNode</strong> – Groups sensors by type (Temperature, Load, etc.).</li>
+  <li><strong>SensorNode</strong> – Actual sensor values (Value and Max).</li>
+</ul>
+
+<p><strong>Important:</strong> Not all hardware nodes are always present. For example:</p>
+<ul>
+  <li><strong>Battery</strong> appears only on laptops.</li>
+  <li><strong>Network</strong> appears only if an active interface is detected.</li>
+</ul>
+<h2 class="style19">Real-time Data Flow</h2>
+
+<p>This diagram explains how hardware data is collected and updated in real-time (typically every second).</p>
+<p><img src="bin/dataflow.gif" width="1024" height="1395" /></p>
+<p><strong>How Real-time Updates Work:</strong></p>
+<ul>
+  <li>The application should call <strong>GetAllHardwareData()</strong> periodically (recommended: every 1000 ms).</li>
+  <li>Each call refreshes all hardware sensors internally.</li>
+  <li>Network speed is calculated using previous and current byte counters.</li>
+  <li>The returned data is already formatted and ready for display.</li>
+</ul>
+
+<p><strong>Important Notes:</strong></p>
+<ul>
+  <li>No background auto-update is performed — updates happen only when the method is called.</li>
+  <li>Calling too frequently (e.g., &lt; 500 ms) may increase CPU usage.</li>
+  <li>Use a timer instead of a loop for better performance and stability.</li>
+</ul>
+<p><strong>C# Real-time Update Example (WinForms)</strong></p>
+
+<blockquote>
+<pre>using HardMonLib;
+using System;
+using System.Windows.Forms;
+
+public partial class Form1 : Form
+{
+    Hardware monitor = new Hardware();
+    Timer t = new Timer();
+
+    public Form1()
+    {
+        InitializeComponent();
+
+        t.Interval = 1000; // 1 second
+        t.Tick += UpdateHardware;
+        t.Start();
+    }
+
+    private void UpdateHardware(object sender, EventArgs e)
+    {
+        var data = monitor.GetAllHardwareData();
+
+        // Example: show first CPU temperature
+        foreach (var system in data)
+        foreach (var mb in system.Children)
+        foreach (var hw in ((Hardware.HardwareNode)mb).Children)
+        {
+            var node = (Hardware.HardwareNode)hw;
+
+            if (node.HardwareType == "CPU")
+            {
+                foreach (var cat in node.Children)
+                {
+                    var c = (Hardware.SensorCategoryNode)cat;
+
+                    if (c.CategoryName == "Temperatures")
+                    {
+                        foreach (var s in c.Children)
+                        {
+                            label1.Text = s.SensorName + " : " + s.Value;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</pre>
+</blockquote>
+<p><strong>Tip:</strong> The built-in web dashboard already uses this real-time flow internally, updating every second via AJAX.</p>
+<h2 class="style19">Understanding Real-Time Monitoring</h2>
+
+<p>HardMonLib is designed to provide near real-time hardware monitoring by combining direct sensor readings and calculated values. Each update cycle reflects the most recent state of the system at the time the method is called.</p>
+
+<p><strong>How Data Stays Fresh:</strong></p>
+<ul>
+  <li>Each call to <strong>GetAllHardwareData()</strong> forces a refresh of all hardware sensors.</li>
+  <li>Values such as CPU load and temperature are retrieved directly from hardware sensors.</li>
+  <li>Network speed is dynamically calculated using the difference between previous and current data.</li>
+</ul>
+
+<p><strong>Why It Matters:</strong></p>
+<ul>
+  <li>Ensures accurate monitoring without background threads.</li>
+  <li>Gives full control to the developer over update frequency.</li>
+  <li>Prevents unnecessary CPU usage when monitoring is not needed.</li>
+</ul>
+<h2 class="style19">Performance Considerations</h2>
+
+<p>Although HardMonLib is lightweight, hardware monitoring inherently involves system-level operations. Proper usage ensures optimal performance.</p>
+
+<ul>
+  <li>Avoid calling <strong>GetAllHardwareData()</strong> more frequently than every 500–1000 ms.</li>
+  <li>Use a <strong>Timer</strong> instead of continuous loops.</li>
+  <li>Dispose the <strong>Hardware</strong> instance when no longer needed.</li>
+  <li>Minimize UI redraw operations when displaying frequent updates.</li>
+</ul>
+
+<p><strong>Recommended Update Intervals:</strong></p>
+<table border="1" cellpadding="3" cellspacing="3">
+  <tr>
+    <td><strong>Scenario</strong></td>
+    <td><strong>Interval</strong></td>
   </tr>
+  <tr>
+    <td>Basic Monitoring</td>
+    <td>1000 ms</td>
+  </tr>
+  <tr>
+    <td>High Precision Monitoring</td>
+    <td>500 ms</td>
+  </tr>
+  <tr>
+    <td>Low Power Mode</td>
+    <td>2000+ ms</td>
+  </tr>
+</table>
+<h2 class="style19">Handling Missing Hardware</h2>
+
+<p>Not all systems have the same hardware configuration. HardMonLib automatically adapts to available components.</p>
+
+<ul>
+  <li><strong>Battery</strong> data is only available on systems with a battery (e.g., laptops).</li>
+  <li><strong>Network</strong> data is only shown when active interfaces are detected.</li>
+  <li>If hardware is unavailable, the corresponding node will not be included.</li>
+</ul>
+
+<p><strong>Best Practice:</strong></p>
+<ul>
+  <li>Always check if a node exists before accessing it.</li>
+  <li>Do not assume a specific hardware type is always present.</li>
+</ul>
+<h2 class="style19">Integration Tips</h2>
+
+<p>To get the best results when integrating HardMonLib into your application, consider the following tips:</p>
+
+<ul>
+  <li>Bind data to UI components like <strong>TreeView</strong>, <strong>DataGridView</strong>, or custom dashboards.</li>
+  <li>Cache previous results if you need to compare changes over time.</li>
+  <li>Use the built-in web server for remote monitoring without additional setup.</li>
+  <li>Combine with logging systems to track long-term hardware behavior.</li>
+</ul>
+<p class="style22">UI Creation Example with HardMonLib by Rodrigo Enaux</p>
+<p><br />  
+  <img src="bin/Example_Project.gif" width="400" /></p>
+<p class="style21">Best Practices</p>
+<ul>
+  <li>Call <strong>GetAllHardwareData()</strong> using a timer (e.g., every 1 second) for real-time updates.</li>
+  <li>Do not call the method in tight loops without delay to avoid high CPU usage.</li>
+  <li>Always check for empty or missing hardware nodes (e.g., no battery or network).</li>
+  <li>Use <strong>StartWebServerAsync()</strong> in GUI applications to prevent UI freezing.</li>
+  <li>Dispose the <strong>Hardware</strong> object properly when the application closes.</li>
+  </ul>
+  <p><a href="/"><strong>&lt; Back Home</strong></a><strong> </strong></p>
+    </tr>
 </table>
 
 </body>
