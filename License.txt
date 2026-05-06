@@ -1,9 +1,9 @@
 HardMon Monitoring Tools
-Copyright (C) 2015-2026 Ari Sohandri Putra
+Copyright (C) 2015-2026 ARImetic
 All Rights Reserved
 Web:		https://hardmon.github.io/
 E-mail:		arisohandriputra@gmail.com
-Developers:	Ari Sohandri Putra
+Developers:	ARImetic
 
 *** LICENSE AGREEMENT ***
 
